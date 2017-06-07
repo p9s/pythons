@@ -17,19 +17,18 @@ def getcontent(url, page):
     contentlist = re.compile( contentpat, re.S ).findall(data)
 
     x = 1
+    contents = {}
     for content in contentlist:
         content = content.replace("\n", '')
         name = "content" + str(x)
-        exec( name+'=content' )
+        contents[name] = content 
         x+=1
 
     y = 1
     for user in userlist:
         name="content"+str(y)
         print("用户 " + str(page) + str(y) + " 是: " + user )
-        print( "内容是: ")
-        exec("print(" + name + ")")
-        print( "\n")
+        print( "内容是: {}\n".format( contents[name]))
         y+=1
 
 
